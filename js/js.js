@@ -1,8 +1,8 @@
 
 let score = 0;
 let level = 1;
-let time = 10;
-let fullTime = 10;
+let time = 10; //time hiện tại
+let fullTime = 10; // time chơi
 let widthTime = 0;
 
 
@@ -30,7 +30,7 @@ function generateCalculation() {
 
 
 function getRandomResult() {
-    let randomResult = Math.random() >= 0.5;//tỉ lệ đúng sai 50:50
+    let randomResult = Math.random() >= 0.5;
     return randomResult ? getResult() : getFakeResult();
 }
 
