@@ -1,6 +1,5 @@
 
 body{
-    font-family: 'Oswald', sans-serif;
     font-size: 35px;
     height: 100%;
 }
@@ -25,17 +24,17 @@ p{
 #score{
     text-align: left;
     padding-left: 10px;
-    background-color: aqua;
+    background-color: #2ce596;
 }
 #level{
     text-align: right;
     padding-right: 10px;
-    background-color:aqua;
+    background-color:#2ce596;
 }
 #time{
     width: 100%;
-    height: 5%;
-    background-color: rgba(255, 0, 0, 0.47);
+    height: 1%;
+    background-color: rgb(176, 66, 171);
     float: left;
 }
 #calculation{
@@ -51,14 +50,14 @@ p{
     float: left;
     width: 100%;
     height: 10%;
-    background-color: beige;
+    background-color: #e55773;
     text-align: center;
 }
 #clickArea{
     float: left;
     width: 100%;
     height: 30%;
-    background-color: bisque;
+    background-color: #ec793d;
     text-align: center;
 }
 button{

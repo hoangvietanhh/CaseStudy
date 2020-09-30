@@ -13,25 +13,25 @@ function getRandomNumber(min, max) {
 
 
 function getRandomOperator() {
-    let operators = ["+", "-", "*","/"];
+    let operators = ["+", "-",];
     let ran = Math.floor(Math.random() * operators.length);
     return operators[ran];
 }
 
 function generateCalculation() {
-    let number1 = getRandomNumber(1*level, 5*level);
-    let number2 = getRandomNumber(1*level, 5*level);
+    let number1 = getRandomNumber(level, 5*level);
+    let number2 = getRandomNumber(level, 5*level);
     let op = getRandomOperator();
     let cal = number1 + " " + op + " " + number2;
 
     document.getElementById("calculation").innerHTML = cal;
-    document.getElementById("result").innerHTML = getRandomResult();
+    document.getElementById("result").innerHTML = getRandomResult(cal);
 }
 
 
 function getRandomResult() {
     let randomResult = Math.random() >= 0.5;
-    return randomResult ? getResult() : getFakeResult();
+    return randomResult ? getResult() : getWrongResult();
 }
 
 function getResult() {
@@ -39,9 +39,9 @@ function getResult() {
     return eval(cal);
 }
 
-function getFakeResult() {
+function getWrongResult() {
     let fakeResult = getRandomNumber(getResult() - 10, getResult() + 10);
-    return (fakeResult === getResult()) ? getFakeResult() : fakeResult;
+    return (fakeResult === getResult()) ? getWrongResult() : fakeResult;
 }
 
 function check(btn) {
@@ -49,7 +49,7 @@ function check(btn) {
     let check = false;
     switch (btn) {
         case "true":
-            if (result == getResult()) check = true;
+            if (result === getResult()) check = true;
             break;
         case "false":
             if (result !== getResult()) check = true;
@@ -65,15 +65,13 @@ function nextLevel() {
     time = fullTime;
     document.getElementById("score").innerHTML = "Score: "+score;
     document.getElementById("level").innerHTML = "Level: "+level;
-    document.getElementById("correct").play();
     generateCalculation();
 }
 function gameOver() {
     document.getElementById("true").style.display = "none";
     document.getElementById("false").style.display = "none";
-    document.getElementById("wrong").play();
     alert("Game Over. Your score is "+ score + ". Replay?");
-    location.reload();
+    window.location.reload();
 }
 
 function countDown() {
@@ -99,3 +97,10 @@ function startGame() {
 }
 
 startGame();
+
+
+
+
+
+
+
