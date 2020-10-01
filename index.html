@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div id="wrap">
 <div id="main">
     <h1>Guess?</h1>
     <p id="score"></p>
@@ -14,11 +15,17 @@
     <div id="calculation"></div>
     <div id="result"></div>
     <div id="clickArea">
-        <button id="true" onclick="check(true)">TRUE</button>
-        <button id="false" onclick="check(false)">FALSE</button>
+        <button id="true" onclick="check('true')">TRUE</button>
+        <button id="false" onclick="check('false')">FALSE</button>
     </div>
+    <audio id="correct">
+        <source src="correct.mp3">
+    </audio>
+    <audio id="wrong">
+        <source src="wrong.mp3">
+    </audio>
+</div>
 </div>
 </body>
 <script src="js/js.js"></script>
-
 </html>

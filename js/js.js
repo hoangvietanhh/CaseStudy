@@ -13,9 +13,13 @@ function getRandomNumber(min, max) {
 
 
 function getRandomOperator() {
-    let operators = ["+", "-",];
+    let operators = ["+", "-","*"];
     let ran = Math.floor(Math.random() * operators.length);
+    if (level >= 2){
+        operators.push("/");
+    }
     return operators[ran];
+
 }
 
 function generateCalculation() {
@@ -23,10 +27,16 @@ function generateCalculation() {
     let number2 = getRandomNumber(level, 5*level);
     let op = getRandomOperator();
     let cal = number1 + " " + op + " " + number2;
-
+    if(level >= 5){
+        cal = number1 + " " + op + " " + number2+ getRandomOperator()+" "+getRandomNumber(2*level,4*level);
+    }
     document.getElementById("calculation").innerHTML = cal;
     document.getElementById("result").innerHTML = getRandomResult(cal);
 }
+
+//     document.getElementById("calculation").innerHTML = cal;
+//     document.getElementById("result").innerHTML = getRandomResult(cal);
+// }
 
 
 function getRandomResult() {
@@ -46,15 +56,17 @@ function getWrongResult() {
 
 function check(btn) {
     let result = +document.getElementById("result").innerHTML;
-    let check = false;
+    let check=false;
+    // console.log(result);
     switch (btn) {
         case "true":
-            if (result === getResult()) check = true;
+            if (result == getResult()) check = true;
             break;
         case "false":
-            if (result !== getResult()) check = true;
+            if (result != getResult()) check = true;
             break;
     }
+    // console.log(getResult())
 
     check ? nextLevel():gameOver();
 }
@@ -65,11 +77,13 @@ function nextLevel() {
     time = fullTime;
     document.getElementById("score").innerHTML = "Score: "+score;
     document.getElementById("level").innerHTML = "Level: "+level;
+    document.getElementById('correct').play();
     generateCalculation();
 }
 function gameOver() {
     document.getElementById("true").style.display = "none";
     document.getElementById("false").style.display = "none";
+    document.getElementById('wrong').play();
     alert("Game Over. Your score is "+ score + ". Replay?");
     window.location.reload();
 }
